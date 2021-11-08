@@ -6,7 +6,7 @@ from .forms import LoginForm
 
 # view for basic user login
 def user_login(request):
-    if request.mwthod == 'POST':
+    if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
