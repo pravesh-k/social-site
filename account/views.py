@@ -20,7 +20,7 @@ def user_login(request):
                     login(request, user)
                     return HttpResponse('Authenticated successfully')
                 else:
-                    return HttpResponse('Disabled account')
+                    return HttpResponse('Disabled account')     # Currently this case is not working
             else:
                 return HttpResponse('Invalid credentials')
         
