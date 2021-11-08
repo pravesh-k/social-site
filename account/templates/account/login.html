@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content % }
+    <h1>Login</h1>
+    <p>Please enter your credentials</p>
+    <form method="post">
+        {{ form.as_p }}
+        <!-- {% csrf_token %} template tag for cross-site
+             request forgery (CSRF) protection -->
+        {% csrf_token %}
+        <p><input type="submit" value="Login"></p>
+    </form>
+{% endblock %}
