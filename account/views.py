@@ -8,28 +8,28 @@ from .forms import LoginForm
 
 # view for basic user login
 def user_login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
-            user = authenticate(
+    if request.method == 'POST':        # if request is POST, pass the form data to form,
+        form = LoginForm(request.POST)  
+        if form.is_valid():             # check for form validity, and then create user object of authenticate
+            cd = form.cleaned_data  
+            user = authenticate(        # pass the collected username and password from the form to the authenticate method
                                 request,
                                 username=cd['username'],
                                 password=cd['password']
                                 )
-            if user:
-                if user.is_active:
-                    login(request, user)
+            if user:                    # if user object is not null, and is active user
+                if user.is_active:      
+                    login(request, user)    #pass the user object to login method
                     return HttpResponse('Authenticated successfully')
                 else:
-                    return HttpResponse('Disabled account')     # Currently this case is not working
+                    return HttpResponse('Disabled account')     # ! Currently this case is not working
             else:
-                return HttpResponse('Invalid credentials')
+                return HttpResponse('Invalid credentials')      # if user is null, return invalid creds
         
-    else:
+    else:                               # id request method is GET, render an empty LoginForm
         form = LoginForm()
 
-    args = {'form': form}
+    args = {'form': form}               # create a dictionary and store the form object
     return render(request, 'account/login.html', args)
 
 # view to display after a successful user login
