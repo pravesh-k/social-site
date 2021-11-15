@@ -41,6 +41,6 @@ def dashboard(request):
         }
     return render(
         request, 
-        'account/dashboard.html',
+        'account/dashboard.html',       # render the data to the dashboard
         args
         )
