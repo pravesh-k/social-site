@@ -37,7 +37,7 @@ def user_login(request):
 def dashboard(request):
 
     args = {
-        'section': 'dashboard'
+        'section': 'dashboard'          # section/menu to display the welcome data
         }
     return render(
         request, 
