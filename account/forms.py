@@ -14,11 +14,11 @@ class UserRegistrationForm(forms.ModelForm):
     password2 = forms.CharField(label='Repeat password', widget=forms.PasswordInput)
 
     class Meta:
-        model = User
-        fields = ('username', 'first_name', 'email')
+        model = User    #using User from auth models
+        fields = ('username', 'first_name', 'email')    #filtering the fields to be displayed for user regn
     
-    def clean_password2(self):
-        cd = self.cleaned_data
-        if cd['password'] != cd['password2']:
+    def clean_password2(self):  
+        cd = self.cleaned_data  #cleaning data
+        if cd['password'] != cd['password2']:   #if password and confirm password do not match, raise alert
             raise forms.ValidationError('\nPasswords do not match.')
         return cd['password2']
