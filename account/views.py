@@ -52,7 +52,9 @@ def register(request):
         if user_form.is_valid():
             # create the new user object but don't save it yet
             new_user = user_form.save(commit=False)
-            # set the chosen password
+            # set the chosen password, for security reasons, instead of 
+            # saving the raw password entered by the user, use the set_password() method
+            # of the user model that handles hashing
             new_user.set_password(
                 user_form.cleaned_data['password']
                 )
