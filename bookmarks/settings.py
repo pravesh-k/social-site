@@ -127,3 +127,7 @@ LOGOUT_URL = 'logout'
 
 #Email Setting
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#Enable handling of media files uploaded by users
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
