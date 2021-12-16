@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.forms import fields
+from .models import Profile
 
 # Form to authenticate users against the database
 class LoginForm(forms.Form):
@@ -22,3 +23,13 @@ class UserRegistrationForm(forms.ModelForm):
         if cd['password'] != cd['password2']:   #if password and confirm password do not match, raise alert
             raise forms.ValidationError('\nPasswords do not match.')
         return cd['password2']
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+
+class ProfileEditForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('date_of_birth', 'photo')
