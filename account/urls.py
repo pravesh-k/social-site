@@ -8,6 +8,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),    #inside templates/registration by default
     path('', views.dashboard, name='dashboard'),                        #path empty indicates this is landing page url
                                                                        #its url will be [ip:port/account]
+    # URLs for password change
     path('password_change/', auth_views.PasswordChangeView.as_view(), name='password_change'),
     path('password_change/done/', auth_views.PasswordChangeDoneView.as_view(), name='password_change_done'),
     
@@ -17,7 +18,7 @@ urlpatterns = [
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
     
-    # URL for registering a new user in the portal and then editing the profile details
+    # URLs for registering a new user in the portal and then editing the profile details
     path('register/', views.register, name='register'),
     path('edit/', views.edit, name='edit'),
     ]
