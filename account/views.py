@@ -82,7 +82,8 @@ def register(request):
         args1)
 
 # view to edit the user profile
-@login_required
+# decorator mentioning a login is required before the user can edit the profile details
+@login_required         
 def edit(request):
     if request.method == 'POST':
         user_form = UserEditForm(
