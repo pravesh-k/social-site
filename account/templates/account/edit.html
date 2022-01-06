@@ -5,7 +5,7 @@
 {% block content %}
     <h1>Edit your profile details</h1>
     <p>Fill the below fields with appropriate data</p>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {{ user_form.as_p }}
         {{ profile_form.as_p }}
         {% csrf_token %}
