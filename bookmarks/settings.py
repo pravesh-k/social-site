@@ -125,9 +125,15 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-#Email Setting
+# Email Setting
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#Enable handling of media files uploaded by users
+# Enable handling of media files uploaded by users
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# Enabling custom authentication backend
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+]
