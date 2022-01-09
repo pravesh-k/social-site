@@ -1,43 +1,62 @@
 {% extends "base.html" %}
 
+{% load widget_tweaks %}
+
 {% block title %}Login{% endblock %}
 <!-- html format for display of login, it must be located in registration
      directory to be rendered using django auth templates -->
 {% block content %}
-    <h1>Login</h1>
-    {% if forms.errors %}
-        <p>
-            Your username and password didn't match.
-            Please try again.
-        </p>
-    {% else %}
-        <p>
-            If you don't have an account
-            <a href="{% url "register" %}">register</a> here <br><br>
-            Please enter your username and password to login. 
-        </p>
-    {% endif %}
-    <div class="login-form">
-        <form action="{% url 'login' %}" method="post">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <!-- hidden input to move to the next page configured -->
-            <input type="hidden" name="next" value="{{ next }}" />      
-            <p><input type="submit" value="Login"></p>
-        </form>
-        <p><a href="{% url "password_reset" %}">Forgot password?</a></p>
-    </div>
-    <div class="social">
-        <ul>
-            <li class="facebook">
-                <a href="{% url "social:begin" "facebook" %}">Sign-in With Facebook</a>
-            </li>
-            <li class="twitter">
-                <a href="{% url "social:begin" "twitter" %}">Sign-in With Twitter</a>
-            </li>
-            <li class="google">
-                <a href="{% url "social:begin" "google-oauth2" %}">Sign-in With Google</a>
-            </li>
-        </ul>
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-md-7 offset-lg-3 col-lg-5">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="mt-4 pt-3 font-weight-bold">Login</h3>
+                    </div>
+                    <div class="panel-body p-4">
+                        <form action="{% url 'login' %}" method="post">
+                            <div class="form-group py-2">
+                            {% if form.errors %}
+                                <div style="color: red; text-align: center;">Incorrect Username, Email or Password!</div>
+                            {% endif %}
+                                <div class="input-field mt-3">
+                                    <span class="far fa-user p-2"></span>
+                                    {% render_field form.username type="text" placeholder="Username or Email" required="" %}
+                                </div>
+                            </div>
+                            <div class="form-group py-1 pb-2">
+                                <div class="input-field"> 
+                                    <span class="fas fa-lock px-2"></span> 
+                                    {% render_field form.password type="password" placeholder="Enter your Password" required="" %}
+                                    <button class="btn bg-white text-muted"> 
+                                        <span class="far fa-eye-slash"></span> 
+                                    </button> 
+                                </div>
+                            </div>
+                            {% csrf_token %}
+                            <div class="form-inline"> 
+                                <input type="checkbox" name="remember" id="remember"> 
+                                <label for="remember" class="text-muted">Remember me</label> 
+                                <a href="{% url "password_reset" %}" id="forgot" class="font-weight-bold">Forgot password?</a>
+                            </div>
+                            <div class="mt-3">
+                                <input type="submit" class="btn btn-primary btn-block " value="Login">
+                            </div>
+                            <div class="text-center pt-4 text-muted">
+                                Don't have an account? 
+                                <a href="{% url "register" %}">Sign up</a> 
+                            </div>
+                        </form>
+                    </div>
+                        <div class="mx-3 my-2 py-2 bordert">
+                            <div class="text-center py-3"> 
+                            <a href="{% url "social:begin" "google-oauth2" %}" target="_blank" class="px-2"> <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt="Google"> </a> 
+                            <a href="{% url "social:begin" "facebook" %}" target="_blank" class="px-2"> <img src="https://cdn.pixabay.com/photo/2021/06/15/12/51/facebook-6338509_960_720.png" alt="Facebook"> </a> 
+                            <a href="{% url "social:begin" "twitter" %}" target="_blank" class="px-2"> <img src="https://cdn.pixabay.com/photo/2015/03/10/17/30/twitter-667462_960_720.png" alt="Twitter"> </a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
