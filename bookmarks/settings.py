@@ -138,6 +138,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
 ]
 
 # Enabling werkzeug debugger to log
@@ -157,3 +159,8 @@ LOGGING = {
         },
     },
 }
+
+# KEY for Facebook Auth2
+SOCIAL_AUTH_FACEBOOK_KEY = '1006380176756768'   #Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'cd829a3d9ad092b110d0d4d3730b8e0c'    #Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
