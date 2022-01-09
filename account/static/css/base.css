@@ -1,13 +1,11 @@
 @import url(//fonts.googleapis.com/css?family=Muli);
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-body {
-    margin:0;
-    padding:0;
-    font-family:helvetica, sans-serif;
-}
-
-p {
-    line-height: 1.8;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
 }
 
 a {
@@ -16,7 +14,86 @@ a {
 }
 
 a:hover {
-    color:#00a74f;
+    text-decoration: none
+}
+
+/* actions */
+.action {
+    clear:both;
+    overflow:auto;
+}
+.action .images {
+    float:left;
+    margin:0 10px 10px 0;
+}
+.action .date {
+    font-style:italic;
+    color:#ccc;
+}
+
+a.like, a.follow { 
+    float:right; margin-top:-8px; 
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(to top, #c9c9ff 50%, #9090fa 90%) no-repeat
+}
+
+.btn.btn-primary {
+    margin-top: 20px;
+    border-radius: 15px
+}
+
+.container {
+    margin: 50px auto
+}
+
+#content {
+    padding:30px 100px;
+}
+
+.count {
+    color:#aaa;
+    border:3px solid #bbb;
+    border-radius:26px;
+    padding:10px 20px;
+    margin:20px 10px 0;
+}
+
+.errorlist {
+    color:#cc0033;
+    float:left;
+    clear:both;
+    padding-left:10px;
+}
+
+.fa-eye-slash.btn {
+    border: none;
+    outline: none;
+    box-shadow: none
+}
+
+#forgot {
+    min-width: 100px;
+    margin-left: auto;
+    text-decoration: none
+}
+
+/* forms */
+form {
+    overflow:auto;
+}
+
+form p {
+    width:100%;
+    overflow:auto;
+}
+
+.form-inline label {
+    padding-left: 10px;
+    margin: 0;
+    cursor: pointer
 }
 
 h1, h2, h3, h4, h5 , h6 { font-family: 'Muli', sans-serif; font-weight:normal; }
@@ -29,10 +106,6 @@ h1 {
 
 h2 {
     margin:30px 0 20px;
-}
-
-ol {
-    line-height:1.5;
 }
 
 #header {
@@ -80,26 +153,38 @@ ol {
     padding-top:4px;
 }
 
-#content {
-    padding:30px 100px;
-}
-
-/* forms */
-form {
-    overflow:auto;
-}
-
-form p {
-    width:100%;
-    overflow:auto;
-}
-
-label {
-    float:left;
+.helptext {
+    margin:0 0 20px 0;
+    color:#aaa;
     clear:both;
-    color:#333;
-    margin-bottom:4px;
+    float:left;
+    font-size:13px;
 }
+
+/* images */
+.image-preview, .image-detail {
+    max-width:300px;
+    float:left;
+    margin:0 20px 20px 0;
+}
+
+.image-detail { 
+    margin-top:20px; 
+}
+
+.image-info div {
+    padding:20px 0;
+    overflow:auto;
+}
+
+input[type='text'],
+input[type='password'] {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 100%
+}
+
 input, textarea {
     clear:both;
     float:left;
@@ -117,19 +202,124 @@ input[type=submit], a.button {
     font-size:14px;
     text-transform:uppercase;
 }
-.errorlist {
-    color:#cc0033;
+
+.input-field {
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #4343ff
+}
+
+#image-list { overflow:auto; }
+#image-list .image {
+    float:left;
+    width:220px;
+    height:300px;
+    margin:0 10px 10px 10px;
+    border-top:8px solid #12c064;
+    background:#eee;
+}
+#image-list img { width:220px; height:220px; }
+#image-list .info { padding:10px; }
+#image-list .info a { color:#333; }
+.image-likes div {
+    float:left;
+    width:auto;
+    padding:10px;
+    text-align:center;
+}
+.image-likes img {
+    width:120px;
+    height:120px;
+    border-radius:50%;
+}
+
+.image-container { 
+    margin-top:40px; 
+}
+
+img.user-detail {
+    border-radius:50%;
+    float:left;
+}
+
+label {
     float:left;
     clear:both;
-    padding-left:10px;
+    color:#333;
+    margin-bottom:4px;
 }
-.helptext {
-    margin:0 0 20px 0;
-    color:#aaa;
-    clear:both;
+
+.login-form {
     float:left;
-    font-size:13px;
 }
+
+ol {
+    line-height:1.5;
+}
+
+p {
+    line-height: 1.8;
+}
+
+.panel {
+    min-height: 380px;
+    box-shadow: 20px 20px 80px rgb(218, 218, 218);
+    border-radius: 12px
+}
+
+.panel-heading {
+    text-align: center;
+    margin-bottom: 10px
+}
+
+/* users */
+#people-list img {
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    margin-bottom:20px;
+}
+
+#people-list .user {
+    width:180px;
+    float:left;
+    overflow:auto;
+    padding:10px;
+}
+
+#people-list .info { 
+    text-align:center; 
+}
+
+.profile-info {
+    float:left;
+    overflow:auto;
+    margin-right:20px;
+}
+
+/* social-auth */
+.social {
+    float:right;
+}
+.social li {
+    list-style:none;
+    padding:10px 20px;
+    margin:0 0 10px 0;
+}
+.social li a {
+    width:100%;
+    height:100%;
+    display:block;
+    color:#fff;
+}
+.social li.facebook { background:#3b5399; }
+.social li.twitter { background:#00cffa; }
+.social li.google { background:#de1710; }
+
 /* messages */
 ul.messages {
     margin:10px 100px;
@@ -137,6 +327,7 @@ ul.messages {
     list-style-type:
     none;
 }
+
 ul.messages li.success,
 ul.messages li.warning,
 ul.messages li.error,
@@ -166,112 +357,4 @@ ul.messages li a.close {
     border:0;
     box-shadow:none;
     text-shadow:none;
-}
-
-.login-form {
-    float:left;
-}
-
-/* social-auth */
-.social {
-    float:right;
-}
-.social li {
-    list-style:none;
-    padding:10px 20px;
-    margin:0 0 10px 0;
-}
-.social li a {
-    width:100%;
-    height:100%;
-    display:block;
-    color:#fff;
-}
-.social li.facebook { background:#3b5399; }
-.social li.twitter { background:#00cffa; }
-.social li.google { background:#de1710; }
-
-
-/* images */
-
-.image-preview, .image-detail {
-    max-width:300px;
-    float:left;
-    margin:0 20px 20px 0;
-}
-.image-detail { margin-top:20px; }
-.image-info div {
-    padding:20px 0;
-    overflow:auto;
-}
-.count {
-    color:#aaa;
-    border:3px solid #bbb;
-    border-radius:26px;
-    padding:10px 20px;
-    margin:20px 10px 0;
-}
-a.like, a.follow { float:right; margin-top:-8px; }
-
-#image-list { overflow:auto; }
-#image-list .image {
-    float:left;
-    width:220px;
-    height:300px;
-    margin:0 10px 10px 10px;
-    border-top:8px solid #12c064;
-    background:#eee;
-}
-#image-list img { width:220px; height:220px; }
-#image-list .info { padding:10px; }
-#image-list .info a { color:#333; }
-.image-likes div {
-    float:left;
-    width:auto;
-    padding:10px;
-    text-align:center;
-}
-.image-likes img {
-    width:120px;
-    height:120px;
-    border-radius:50%;
-}
-
-/* users */
-#people-list img {
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    margin-bottom:20px;
-}
-#people-list .user {
-    width:180px;
-    float:left;
-    overflow:auto;
-    padding:10px;
-}
-#people-list .info { text-align:center; }
-img.user-detail {
-    border-radius:50%;
-    float:left;
-}
-.profile-info {
-    float:left;
-    overflow:auto;
-    margin-right:20px;
-}
-.image-container { margin-top:40px; }
-
-/* actions */
-.action {
-    clear:both;
-    overflow:auto;
-}
-.action .images {
-    float:left;
-    margin:0 10px 10px 0;
-}
-.action .date {
-    font-style:italic;
-    color:#ccc;
 }
