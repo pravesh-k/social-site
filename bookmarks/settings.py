@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -140,6 +143,7 @@ AUTHENTICATION_BACKENDS = [
     'account.authentication.EmailAuthBackend',
     'social_core.backends.facebook.FacebookOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
 ]
 
 # Enabling werkzeug debugger to log
@@ -161,10 +165,10 @@ LOGGING = {
 }
 
 # KEY for Facebook Auth2
-SOCIAL_AUTH_FACEBOOK_KEY = '1006380176756768'   #Facebook App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'cd829a3d9ad092b110d0d4d3730b8e0c'    #Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = os.getenv('SOCIAL_AUTH_FACEBOOK_KEY')   #Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = os.getenv('SOCIAL_AUTH_FACEBOOK_SECRET')    #Facebook App Secret
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 # KEY for Twitter Auth1
-SOCIAL_AUTH_TWITTER_KEY = 'W1JhkWbsSHlgkBB0RtFKsuA9E'    # Twitter API Key
-SOCIAL_AUTH_TWITTER_SECRET = 'vMAUHsuXsaS4maUOcF4qPFnbR2CVXpI0vzC7Rbbf2zjTzC1XtZ' # Twitter API Secret
+SOCIAL_AUTH_TWITTER_KEY = os.getenv('SOCIAL_AUTH_TWITTER_KEY')    # Twitter API Key
+SOCIAL_AUTH_TWITTER_SECRET = os.getenv('SOCIAL_AUTH_TWITTER_SECRET')    # Twitter API Secret
