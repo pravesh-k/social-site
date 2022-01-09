@@ -212,7 +212,7 @@ input[type='password'] {
     width: 100%
 }
 
-input, textarea {
+/* input, textarea {
     clear:both;
     float:left;
     margin:0 0 10px;
@@ -220,14 +220,11 @@ input, textarea {
     border:0;
     padding:6px 10px;
     font-size:14px;
-}
-input[type=submit], a.button {
+} */
+input[type=submit] {
     font-weight:bold;
-    background:#12c064;
     color:#fff;
-    padding:10px 20px;
     font-size:14px;
-    text-transform:uppercase;
 }
 
 .input-field {
