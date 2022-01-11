@@ -1,13 +1,63 @@
 {% extends "base.html" %}
 
+{% load widget_tweaks %}
+
 {% block title %}Create an account{% endblock %}
 
 {% block content %}
-    <h1>Create an account</h1>
-    <p>Please fill the below details</p>
-    <form method="post">
-        {{ user_form.as_p }}
-        {% csrf_token %}
-        <p><input type="submit" value="Create my account"</p>
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-md-7 offset-lg-3 col-lg-5">
+                <div class="panel border bg-white">
+                    <div class="panel-heading">
+                        <h3 class="mt-4 pt-3 font-weight-bold">Create an account</h3>
+                    </div>
+                    <div class="panel-body p-4">
+                        <form method="post">
+                            <div class="form-group py-2">
+                                <div class="input-field mt-3">
+                                    <span class="far fa-user p-2"></span>
+                                    {% render_field user_form.username type="text" placeholder="Username" required="" %}
+                                </div>
+                            </div>
+                            <div class="form-group py-2">
+                                <div class="input-field mt-3">
+                                    <span class="far fa-user p-2"></span>
+                                    {% render_field user_form.first_name type="text" placeholder="First name" required="" %}
+                                </div>
+                            </div>
+                            <div class="form-group py-2">
+                                <div class="input-field mt-3">
+                                    <span class="far fa-user p-2"></span>
+                                    {% render_field user_form.email type="text" placeholder="Email" required="" %}
+                                </div>
+                            </div>
+                            <div class="form-group py-1 pb-2">
+                                <div class="input-field"> 
+                                    <span class="fas fa-lock px-2"></span> 
+                                    {% render_field user_form.password type="password" placeholder="Enter your Password" required="" %}
+                                    <button class="btn bg-white text-muted"> 
+                                        <span class="far fa-eye-slash"></span> 
+                                    </button> 
+                                </div>
+                            </div>
+                            <div class="form-group py-1 pb-2">
+                                <div class="input-field"> 
+                                    <span class="fas fa-lock px-2"></span> 
+                                    {% render_field user_form.password2 type="password" placeholder="Enter your Password" required="" %}
+                                    <button class="btn bg-white text-muted"> 
+                                        <span class="far fa-eye-slash"></span> 
+                                    </button> 
+                                </div>
+                            </div>
+                            {% csrf_token %}
+                            <div class="mt-3">
+                                <input type="submit" class="btn btn-primary btn-block " value="Register">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
