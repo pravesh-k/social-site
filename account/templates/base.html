@@ -17,28 +17,53 @@
                 <img src="https://img.icons8.com/wired/64/26e07f/b.png" width="30" height="30" class="d-inline-block" style="border-radius: 0%;" alt="B">
                 <span style="font-size: larger; font-weight: bolder;" class="align-bottom">ookmarks</span>
             </a>
-            {% if request.user.is_authenticated %}
-            <div class="navbar-nav">
-                <div style="margin: auto;">
-                    <a class="nav-link nav-item active" href="{% url "dashboard" %}">
-                        Dashboard
-                        <span class="sr-only">(current)</span>
-                    </a>
-                    <a class="nav-link nav-item" href="#">Images</a>
-                    <a class="nav-link nav-item" href="#">People</a>
-                </div>
-                <div style="margin: auto;">
-                    <span class="navbar-text" style="color: aliceblue;">
-                        Hello {{ request.user.first_name }},
-                    </span>
-                    <a class="nav-item nav-link" href="{% url "edit" %}">Edit Profile </a>
-                    <a class="nav-item nav-link" href="{% url "password_change" %}">Change Password </a>
-                    <a class="nav-item nav-link" href="{% url "logout" %}">Logout</a>
-                </div>
-                {% else %}
-                <a class="nav-item nav-link" href="{% url "login" %}">Login</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{% url "dashboard" %}">
+                            Dashboard
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Images</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">People</a>
+                    </li>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                    <li class="nav-item">
+                        <span class="navbar-text" style="color: aliceblue;">
+                            Hello {{ request.user.first_name }},
+                        </span>
+                    </li>    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Options
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url "edit" %}">Edit Profile </a>
+                            <a class="dropdown-item" href="{% url "password_change" %}">Change Password </a>
+                            <a class="dropdown-item" href="{% url "logout" %}">Logout</a>
+                        </div>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url "login" %}">
+                            Login
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
-            {% endif %}
         </nav>
         {% if messages %}
             <ul class="messages">
