@@ -11,33 +11,35 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
-        <div id="header">
-            <span class="logo">Bookmarks</span>
+        <!-- <div id="header"> -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url "dashboard" %}">
+                <img src="https://img.icons8.com/wired/64/26e07f/b.png" width="30" height="30" class="d-inline-block" style="border-radius: 0%;" alt="B">
+                <span style="font-size: larger; font-weight: bolder;" class="align-bottom">ookmarks</span>
+            </a>
             {% if request.user.is_authenticated %}
-                <ul class="menu">
-                    <li {% if section == "dashboard" %}class="selected"{% endif %}>
-                        <a href="{% url "dashboard" %}">My dashboard</a>
-                    </li>
-                    <li {% if section == "images" %}class="selected"{% endif %}>
-                        <a href="#">Images</a>
-                    </li>
-                    <li {% if section == "people" %}class="selected"{% endif %}>
-                        <a href="#">People</a>
-                    </li>
-                </ul>
-            {% endif %}
-            
-            <span class="user">
-                {% if request.user.is_authenticated %}
-                    Hello {{ request.user.first_name }},
-                    <a href="{% url "edit" %}">Edit Profile </a>or
-                    <a href="{% url "password_change" %}">Change Password </a>or
-                    <a href="{% url "logout" %}">Logout</a>
+            <div class="navbar-nav">
+                <div style="margin: auto;">
+                    <a class="nav-link nav-item active" href="{% url "dashboard" %}">
+                        Dashboard
+                        <span class="sr-only">(current)</span>
+                    </a>
+                    <a class="nav-link nav-item" href="#">Images</a>
+                    <a class="nav-link nav-item" href="#">People</a>
+                </div>
+                <div style="margin: auto;">
+                    <span class="navbar-text" style="color: aliceblue;">
+                        Hello {{ request.user.first_name }},
+                    </span>
+                    <a class="nav-item nav-link" href="{% url "edit" %}">Edit Profile </a>
+                    <a class="nav-item nav-link" href="{% url "password_change" %}">Change Password </a>
+                    <a class="nav-item nav-link" href="{% url "logout" %}">Logout</a>
+                </div>
                 {% else %}
-                    <a href="{% url "login" %}">Login</a>
-                {% endif %}
-            </span>
-        </div>
+                <a class="nav-item nav-link" href="{% url "login" %}">Login</a>
+            </div>
+            {% endif %}
+        </nav>
         {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
